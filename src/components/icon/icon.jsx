@@ -4,7 +4,7 @@ export const Icon = ({iconName}) => {
   
   return (
     <svg className = "icon">
-      <use href = {`./src/assets/icons.svg#icon-${iconName}`}></use>
+      <use href = {`./icons.svg#icon-${iconName}`}></use>
     </svg>
   )
 }
