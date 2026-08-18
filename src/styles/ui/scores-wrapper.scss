@@ -1,0 +1,29 @@
+.scores-wrapper {
+  display: flex;
+  width: 30rem;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 768px) {
+  .scores-wrapper {
+    width: 25rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .scores-wrapper {
+    width: 20rem;
+  }
+}
+
+@media screen and (max-width: 384px) {
+  .scores-wrapper {
+    width: 17.5rem;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .scores-wrapper {
+    width: 15rem;
+  }
+}

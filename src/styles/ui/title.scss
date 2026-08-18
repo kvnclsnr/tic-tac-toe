@@ -1,0 +1,14 @@
+h1 {
+  font-size: 1.5rem;
+  font-family: JetBrainsMono;
+  letter-spacing: 1px;
+  color: var(--text);
+  
+  transition: color 0.25s ease;
+}
+
+@media screen and (max-width: 320px) {
+  h1 {
+    font-size: 1.25rem;
+  }
+}

@@ -1,0 +1,11 @@
+body {
+  box-sizing: border-box;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: Inter;
+  padding-block: 2.5rem;
+  min-height: 100vh;
+  position: relative;
+  
+  transition: all 0.25s ease;
+}

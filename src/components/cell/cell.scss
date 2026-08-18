@@ -1,0 +1,64 @@
+.cell {
+  background-color: transparent;
+  box-sizing: border-box;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  transition: border-right 0.25s ease, border-bottom 0.25s ease, background-color 0.25s ease;
+  
+  &.red {
+    color: var(--red);
+  }
+  
+  &.blue {
+    color: var(--blue);
+  }
+  
+  &:hover {
+    background-color: var(--bg-hover);
+  }
+  
+  .icon {
+    height: 7rem;
+    width: 7rem;
+    stroke-width: 0.75;
+  }
+}
+
+.cell:nth-child(3n) {
+  border-right: none;
+}
+
+.cell:nth-last-child(-n + 3) {
+  border-bottom: none;
+}
+
+@media screen and (max-width: 576px) {
+  .cell {
+    .icon {
+      width: 6rem;
+      height: 6rem;
+    }
+  }
+}
+
+@media screen and (max-width: 384px) {
+  .cell {
+    .icon {
+      width: 5rem;
+      height: 5rem;
+    }
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .cell {
+    .icon {
+      width: 4rem;
+      height: 4rem;
+    }
+  }
+}

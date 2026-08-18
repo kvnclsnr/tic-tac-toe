@@ -1,0 +1,33 @@
+
+// ABSTRACT
+
+@use "./abstract/functions";
+@use "./abstract/mixins";
+@use "./abstract/variables";
+
+// BASE
+
+@use "./base/body";
+@use "./base/reset";
+@use "./base/root";
+@use "./base/scrollbar";
+@use "./base/selection";
+
+// FONTS
+
+@use "./fonts/fonts";
+
+// UI
+
+@use "./ui/scores-wrapper.scss";
+@use "./ui/title";
+
+// COMPONENTS
+
+@use "../components/board/board";
+@use "../components/cell/cell";
+@use "../components/end/end";
+@use "../components/icon/icon";
+@use "../components/score/score";
+@use "../components/shift/shift";
+@use "../components/switcher/switcher";

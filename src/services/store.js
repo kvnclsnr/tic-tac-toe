@@ -1,0 +1,1 @@
+export const logicBoard = Array(9).fill(null)

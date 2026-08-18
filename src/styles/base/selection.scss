@@ -1,0 +1,5 @@
+@use "../abstract/functions.scss" as *;
+
+::selection {
+  background-color: translucent(var(--current), 25%);
+}

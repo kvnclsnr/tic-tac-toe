@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+}
+
+h1, h2, h3, strong, span, p {
+  margin: 0;
+  line-height: 1;
+}
+
+button, a {
+  cursor: pointer;
+}
+
+button {
+  padding: 0;
+  border: none;
+  font-family: inherit;
+  color: inherit;
+}

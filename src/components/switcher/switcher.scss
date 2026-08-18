@@ -1,0 +1,30 @@
+.switcher {
+  position: absolute;
+  top: 2.25rem;
+  right: 2.25rem;
+  background-color: transparent;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text);
+  
+  transition: color 0.25s ease;
+  
+  .icon {
+    height: 1.5rem;
+    width: 1.5rem;
+    stroke-width: 1.5;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .switcher {
+    top:auto;
+    right: auto;
+    bottom: 2rem;
+    left: 2rem;
+  }
+}

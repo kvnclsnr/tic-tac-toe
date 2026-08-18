@@ -1,0 +1,28 @@
+.board {
+  display: grid;
+  width: 25rem;
+  height: 25rem;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+@media screen and (max-width: 576px) {
+  .board {
+    width: 20rem;
+    height: 20rem;
+  }
+}
+
+@media screen and (max-width: 384px) {
+  .board {
+    width: 17.5rem;
+    height: 17.5rem;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .board {
+    width: 15rem;
+    height: 15rem;
+  }
+}
