@@ -1,4 +1,4 @@
-import { COLORS, SHIFTS } from "../../utils/constanst"
+import { COLORS, SHIFTS } from "../../utils/constanst.js"
 
 export const Shift = ({children, shift}) => {
   return (
