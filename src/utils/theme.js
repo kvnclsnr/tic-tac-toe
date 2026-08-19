@@ -1,8 +1,16 @@
+import { getStoreTheme, loadLocalStorage, setStoreTheme } from "../services/store.js"
 import { THEMES } from "./constanst.js"
 
-export const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
-? THEMES.DARK
-: THEMES.LIGHT
+loadLocalStorage()
+
+export const defaultTheme = getStoreTheme()
+?? (
+  window.matchMedia("(prefers-color-scheme: dark)").matches
+  ? THEMES.DARK
+  : THEMES.LIGHT
+)
+
+setStoreTheme(defaultTheme)
 
 export const setTheme = (theme) => {
   document.documentElement.dataset.theme = theme
@@ -23,5 +31,5 @@ export const switchTheme = () => {
 }
 
 export const initTheme = () => {
-  setTheme(systemTheme)
+  setTheme(defaultTheme)
 }

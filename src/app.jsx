@@ -10,9 +10,10 @@ import { Switcher } from "./components/switcher/switcher.jsx"
 
 import { checkDraw, checkWinner } from "./utils/checker.js"
 import { COLORS, ICONS, SHIFTS, THEMES } from "./utils/constanst.js"
-import { getOtherTheme, getTheme, switchTheme, systemTheme } from "./utils/theme.js"
+import { getOtherTheme, getTheme, switchTheme, defaultTheme } from "./utils/theme.js"
 import { setVariableCSS } from "./utils/variablesCSS.js"
 import { setFavicon } from "./utils/favicon.js"
+import { getStoreCounter, setStoreCounter, setStoreTheme } from "./services/store.js"
 
 const FIRST_SHIFT = SHIFTS.X
 
@@ -37,31 +38,28 @@ export const App = () => {
   
   const [ board, setBoard ] = useState([...EMPTY_BOARD])
   
-  const [ counter, setCounter ] = useState({...EMPTY_COUNTER})
+  const [ counter, setCounter ] = useState({...getStoreCounter()})
   
   const [ end, setEnd ] = useState({...EMPTY_END})
   
+  const [ theme, setTheme ] = useState(defaultTheme)
   
-  const [ theme, setTheme ] = useState(systemTheme)
+  // ANIMATIONS
+  
+  
   
   // UPDATE
-  
-  const disableBoard = (state) => {
-    document.querySelectorAll(".board .cell").forEach(cell => {
-      cell.disabled = state
-    })
-  }
   
   const handlerSwitch = () => {
     const newTheme = getOtherTheme(theme)
     
     switchTheme(newTheme)
     setTheme(newTheme)
+    
+    setStoreTheme(newTheme)
   }
   
-  const handlerBoard = (index) => {
-    if (board[index] !== null) return
-    
+  const makeMove = (index) => {
     const newBoard = [...board]
     newBoard[index] = shift
     
@@ -80,6 +78,8 @@ export const App = () => {
     newEnd.winner = winner
     
     setCounter(newCounter)
+    setStoreCounter(newCounter)
+    
     setEnd(newEnd)
   }
   
@@ -92,6 +92,8 @@ export const App = () => {
     newEnd.finished = true
     
     setCounter(newCounter)
+    setStoreCounter(newCounter)
+    
     setEnd(newEnd)
   }
   
@@ -105,13 +107,14 @@ export const App = () => {
   }
   
   const update = (index) => {
-    const newBoard = handlerBoard(index)
+    if (board[index] !== null) return
+    
+    const newBoard = makeMove(index)
     
     const hasWinner = checkWinner(newBoard)
     
     if (hasWinner) {
       showWinner(hasWinner)
-      disableBoard(true)
       return
     }
     
@@ -119,7 +122,6 @@ export const App = () => {
     
     if (isDraw) {
       showDraw()
-      disableBoard(true)
       return
     }
     
@@ -127,18 +129,18 @@ export const App = () => {
   }
   
   const playAgain = () => {
-    disableBoard(false)
-    
     setShift(FIRST_SHIFT)
-    setBoard(EMPTY_BOARD)
-    setEnd(EMPTY_END)
+    setBoard([...EMPTY_BOARD])
+    setEnd({...EMPTY_END})
+    
     setVariableCSS("--current", "var(--red)")
     setFavicon(FIRST_SHIFT)
   }
   
   const resetGame = () => {
     playAgain()
-    setCounter(EMPTY_COUNTER)
+    setCounter({...EMPTY_COUNTER})
+    setStoreCounter({...EMPTY_COUNTER})
   }
   
   return (
@@ -171,7 +173,14 @@ export const App = () => {
     <Board>
       {
         board.map((cell, index) => {
-          return <Cell key = {`cell-${index}`} cell = {cell} handler = {() => update(index)}></Cell>
+          return (
+            <Cell
+              key = {`cell-${index}`}
+              cell = {cell}
+              disabled = {end.finished}
+              handler = {() => update(index)}
+            ></Cell>
+          )
         })
       }
     </Board>
