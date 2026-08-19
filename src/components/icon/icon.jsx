@@ -1,6 +1,6 @@
-export const Icon = ({iconName}) => {
+export const Icon = ({iconName = null}) => {
   
-  if (iconName === null) return null
+  if (!iconName) return null
   
   return (
     <svg className = "icon">

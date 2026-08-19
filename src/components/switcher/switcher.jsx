@@ -1,12 +1,9 @@
 import { THEMES } from "../../utils/constanst.js"
-import { getTheme, switchTheme } from "../../utils/theme.js"
+import { getOtherTheme, getTheme, switchTheme } from "../../utils/theme.js"
 
-export const Switcher = ({children, callback}) => {
+export const Switcher = ({children, handler}) => {
   return (
-    <button className = "switcher" onClick = {() => {
-        callback(getTheme() === THEMES.DARK ? THEMES.LIGHT : THEMES.DARK)
-        switchTheme()
-      }}>
+    <button className = "switcher" onClick = {handler}>
       {children}
     </button>
   )

@@ -1,0 +1,20 @@
+.reset-game {
+  background-color: transparent;
+  padding: 0;
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: var(--muted);
+  border-bottom: 1px solid currentColor;
+  
+  transition: color 0.25s ease;
+  
+  &:hover {
+    color: var(--text);
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .reset-game {
+    font-size: 0.625rem;
+  }
+}

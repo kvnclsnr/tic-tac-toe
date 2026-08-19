@@ -14,6 +14,9 @@ export const SHIFTS = {
 export const COLORS = {
   RED: "red",
   BLUE: "blue",
+  [SHIFTS.X]: "red",
+  [SHIFTS.O]: "blue",
+  ["draw"]: "default",
 }
 
 export const THEMES = {
